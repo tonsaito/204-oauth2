@@ -1,0 +1,21 @@
+version: '3.4'
+
+x-common-variables: &common-variables
+  SERVICE_DISCOVERY_SERVER_ADDRESS: 192.168.0.12
+  SERVICE_DISCOVERY_SERVER_PORT: 8500
+  LOCAL_ADDRESS: 192.168.0.12
+
+services:
+  consul-service:
+    image: consul:latest
+    container_name: consul-server
+    command: "agent -server -ui -node=server -bootstrap-expect=1 -client=0.0.0.0 -bind=0.0.0.0"
+    ports:
+      - "8500:8500"
+      - "8600:8600/udp"
+    networks:
+      - consul-net-local
+
+networks:
+  consul-net-local:
+    driver: bridge
