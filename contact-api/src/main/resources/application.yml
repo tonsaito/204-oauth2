@@ -1,0 +1,18 @@
+server:
+    port: 5100
+    error:
+        include-stacktrace: never
+
+spring:
+    application:
+        name: contact-api
+    cloud:
+        consul:
+        host: localhost
+        port: 8500
+        failFast: false
+
+security:
+    oauth2:
+        resource:
+            user-info-uri: http://200.171.251.125:25565/me
