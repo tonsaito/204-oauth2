@@ -1,0 +1,13 @@
+server:
+    port: 5000
+    error:
+        include-stacktrace: never
+
+spring:
+    application:
+        name: resource-server
+
+security:
+    oauth2:
+        resource:
+            user-info-uri: http://200.171.251.125:25565/me
